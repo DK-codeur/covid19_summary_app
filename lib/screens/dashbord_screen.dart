@@ -1,3 +1,6 @@
+import 'package:bubble_bottom_bar/bubble_bottom_bar.dart';
+import 'package:covid19_summary_app/screens/home_screen.dart';
+import 'package:covid19_summary_app/shared/functions.dart';
 import 'package:covid19_summary_app/widget/latest_new.dart';
 
 import '../shared/colors.dart';
@@ -9,94 +12,37 @@ class DashbordScreen extends StatefulWidget {
 }
 
 class _DashbordScreenState extends State<DashbordScreen> {
+
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  final _tabs = [
+    HomeScreen(),
+    Scaffold(body: Center(child: Text('another'),)),
+    Scaffold(body: Center(child: Text('another2'),)),
+    Scaffold(body: Center(child: Text('another3'),)),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         backgroundColor: primaryDark2,
-        body: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              Stack(
-                children: <Widget>[
-                  Container(
-                    height: MediaQuery.of(context).size.height /2.3,
-                    // width: double.infinity,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        fit: BoxFit.fill,
-                        image: AssetImage(
-                          'assets/images/n1.jpg',
-                        )
-                      )
-                    ),
-                  ),
+        body: _tabs[_selectedIndex],
 
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    padding: EdgeInsets.symmetric(horizontal: 10),
-                    margin: EdgeInsets.only(top: 15, right: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: <Widget>[
-                        CircleAvatar(
-                          backgroundColor: Colors.black38,
-                          child: Icon(Icons.notification_important, color: Colors.white,)
-                        ),
-                      ],
-                    ),
-                  ),
-
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    margin: EdgeInsets.only(top: 220),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(40),
-                        topRight: Radius.circular(40),
-                      )
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(4.0),
-                      child: Column(
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.all(14.0),
-                            child: Row(
-                              children: <Widget>[
-                                Text(
-                                  'Last News',
-                                  style: TextStyle(
-                                    fontSize: 22.0, 
-                                    fontWeight: FontWeight.bold, 
-                                    fontFamily: 'Poppins',
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-
-                          SizedBox(height: 25.0,),
-
-                          LatestNew(country: "Côte d'Ivoire", flag: 'ci.png',),
-                          LatestNew(country: "France", flag: 'fr.png',),
-                          LatestNew(country: "Chine", flag: 'cn.png',),
-                        ],
-                      ),
-                    ),
-                    
-                  )
-                ],
-              ),
-            ],
-          ),
-        ),
+        bottomNavigationBar: buildBubbleBottomBar(_selectedIndex, _onItemTapped),
       ),
     );
   }
 
- 
+
+  
+
 
 
 }
