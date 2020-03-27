@@ -1,10 +1,9 @@
-import 'package:bubble_bottom_bar/bubble_bottom_bar.dart';
-import 'package:covid19_summary_app/screens/home_screen.dart';
-import 'package:covid19_summary_app/shared/functions.dart';
-import 'package:covid19_summary_app/widget/latest_new.dart';
-
-import '../shared/colors.dart';
 import 'package:flutter/material.dart';
+
+import './summary_screen.dart';
+import '../screens/home_screen.dart';
+import '../shared/functions.dart';
+import '../shared/colors.dart';
 
 class DashbordScreen extends StatefulWidget {
   @override
@@ -23,7 +22,7 @@ class _DashbordScreenState extends State<DashbordScreen> {
 
   final _tabs = [
     HomeScreen(),
-    Scaffold(body: Center(child: Text('another'),)),
+    SummaryScreen(),
     Scaffold(body: Center(child: Text('another2'),)),
     Scaffold(body: Center(child: Text('another3'),)),
   ];

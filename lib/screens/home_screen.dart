@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../shared/colors.dart';
 import '../widget/latest_new.dart';
+import '../shared/functions.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -57,26 +58,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     padding: EdgeInsets.all(4.0),
                     child: Column(
                       children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.all(14.0),
-                          child: Row(
-                            children: <Widget>[
-                              Text(
-                                'Last News',
-                                style: TextStyle(
-                                  fontSize: 22.0, 
-                                  fontFamily: 'Poppins',
-                                  fontWeight: FontWeight.bold, 
-                                  color: Colors.white70
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-
-                        SizedBox(height: 0,),
+                        buildLastNewText('Local Last News'),
 
                         LatestNew(country: "Côte d'Ivoire", flag: 'ci.png', totalConf: 80, totalDeath: 0, totalRecov: 3,),
+                        
+                        buildLastNewText('More infected'),
+
                         LatestNew(country: "France", flag: 'fr.png', totalConf: 3200, totalDeath: 1200, totalRecov: 2000,),
                         LatestNew(country: "Chine", flag: 'cn.png', totalConf: 5300, totalDeath: 300, totalRecov: 5000,),
                       ],
@@ -90,4 +77,6 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       );
   }
+
+  
 }
