@@ -1,3 +1,4 @@
+import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
 import '../shared/colors.dart';
 import '../widget/latest_new.dart';
@@ -19,13 +20,24 @@ class _HomeScreenState extends State<HomeScreen> {
                 Container(
                   height: MediaQuery.of(context).size.height /2.3,
                   // width: double.infinity,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      fit: BoxFit.fill,
-                      image: AssetImage(
-                        'assets/images/n1.jpg',
-                      )
-                    )
+                  child: Carousel(
+                    images: [
+                      AssetImage('assets/images/n4.jpg'),
+                      AssetImage('assets/images/n3.jpg'),
+                      AssetImage('assets/images/n1.jpg'),
+                      // ExactAssetImage("assets/images/LaunchImage.jpg")
+                    ],
+                    
+                    autoplayDuration: const Duration(seconds: 6),
+                    dotPosition: DotPosition.topLeft,
+                    dotIncreasedColor: Colors.white60,
+                    dotColor: primaryDark2,
+                    dotVerticalPadding: 25.0,
+                    dotSize: 4.0,
+                    dotSpacing: 15.0,
+                    indicatorBgPadding: 5.0,
+                    dotBgColor: Colors.black.withOpacity(0.5),
+                    borderRadius: true,
                   ),
                 ),
 

@@ -29,13 +29,11 @@ class _DashbordScreenState extends State<DashbordScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: primaryDark2,
-        body: _tabs[_selectedIndex],
+    return Scaffold(
+      backgroundColor: primaryDark2,
+      body: _tabs[_selectedIndex],
 
-        bottomNavigationBar: buildBubbleBottomBar(_selectedIndex, _onItemTapped),
-      ),
+      bottomNavigationBar: buildBubbleBottomBar(_selectedIndex, _onItemTapped),
     );
   }
 
