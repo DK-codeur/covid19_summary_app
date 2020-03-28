@@ -6,6 +6,8 @@ import '../shared/functions.dart';
 import '../shared/colors.dart';
 
 class DashbordScreen extends StatefulWidget {
+  static const routeName = '/dashbord';
+
   @override
   _DashbordScreenState createState() => _DashbordScreenState();
 }
@@ -23,8 +25,8 @@ class _DashbordScreenState extends State<DashbordScreen> {
   final _tabs = [
     HomeScreen(),
     SummaryScreen(),
-    Scaffold(body: Center(child: Text('another2'),)),
-    Scaffold(body: Center(child: Text('another3'),)),
+    Scaffold(body: Center(child: Text('Graph stats'),)),
+    Scaffold(body: Center(child: Text('News'),)),
   ];
 
   @override

@@ -67,11 +67,12 @@ class _SummaryScreenState extends State<SummaryScreen> {
       ),
 
       body: Padding(
-        padding: const EdgeInsets.only(top: 35.0),
+        padding: const EdgeInsets.only(top: 5.0),
         child: ListView(
           children: <Widget>[
+            
             Container(
-              margin: EdgeInsets.symmetric(vertical: 13.0),
+              margin: EdgeInsets.symmetric(vertical: 14.0),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -132,8 +133,8 @@ class _SummaryScreenState extends State<SummaryScreen> {
 
                    
 
-           Container(
-             margin: EdgeInsets.symmetric(vertical: 13.0),
+          Container(
+             margin: EdgeInsets.symmetric(vertical: 14.0),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -195,7 +196,7 @@ class _SummaryScreenState extends State<SummaryScreen> {
 
 
             Container(
-              margin: EdgeInsets.symmetric(vertical: 13.0),
+              margin: EdgeInsets.symmetric(vertical: 14.0),
               child: Column(
                 children: <Widget>[
                   Row(

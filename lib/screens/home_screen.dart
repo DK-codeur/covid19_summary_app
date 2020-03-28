@@ -28,10 +28,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       // ExactAssetImage("assets/images/LaunchImage.jpg")
                     ],
                     
+                    animationCurve: Curves.linearToEaseOut,
                     autoplayDuration: const Duration(seconds: 6),
+                    animationDuration: const Duration(milliseconds: 800),
                     dotPosition: DotPosition.topLeft,
                     dotIncreasedColor: Colors.white60,
-                    dotColor: primaryDark2,
+                    dotColor: primaryDark,
                     dotVerticalPadding: 25.0,
                     dotSize: 4.0,
                     dotSpacing: 15.0,
