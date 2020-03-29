@@ -3,6 +3,18 @@ import 'package:bubble_bottom_bar/bubble_bottom_bar.dart';
 
 import './colors.dart';
 
+  //buildAppbarTitle
+  Text buildAppbarTitle(String title) {
+    return Text(
+      title, 
+      style: TextStyle(
+        color: whiteColor,
+        fontFamily: 'CenturyGothic',
+        fontWeight: FontWeight.bold
+      )
+    );
+  }
+
   //buildContainer
   Container buildContainer(String title, int numb, Color color1, Color color2,) {
     return Container(
@@ -75,6 +87,26 @@ import './colors.dart';
             style: TextStyle(
               fontSize: 20.0, 
               fontFamily: 'Poppins',
+              // fontWeight: FontWeight.bold, 
+              color: Colors.white70
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  //buildStatsTitleText
+  Padding buildStatsTitleText(String text) {
+    return Padding(
+      padding: const EdgeInsets.all(13.0),
+      child: Row(
+        children: <Widget>[
+          Text(
+            text,
+            style: TextStyle(
+              fontSize: 15.0, 
+              fontFamily: 'CenturyGhotic',
               // fontWeight: FontWeight.bold, 
               color: Colors.white70
             ),

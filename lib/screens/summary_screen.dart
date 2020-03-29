@@ -14,14 +14,7 @@ class _SummaryScreenState extends State<SummaryScreen> {
     return Scaffold(
       backgroundColor: primaryDark,
       appBar: AppBar(
-        title: Text(
-          'All Country Info', 
-          style: TextStyle(
-            color: whiteColor,
-            fontFamily: 'CenturyGothic',
-            fontWeight: FontWeight.bold
-          )
-        ),
+        title: buildAppbarTitle("All Country Info"),
         backgroundColor: primaryDark,
         elevation: 50,
         bottom: PreferredSize(
@@ -259,6 +252,5 @@ class _SummaryScreenState extends State<SummaryScreen> {
       ),
     );
   }
-
   
 }

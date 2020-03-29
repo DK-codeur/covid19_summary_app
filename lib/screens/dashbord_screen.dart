@@ -1,3 +1,4 @@
+import 'package:covid19_summary_app/screens/stats_screen.dart';
 import 'package:flutter/material.dart';
 
 import './summary_screen.dart';
@@ -25,7 +26,7 @@ class _DashbordScreenState extends State<DashbordScreen> {
   final _tabs = [
     HomeScreen(),
     SummaryScreen(),
-    Scaffold(body: Center(child: Text('Graph stats'),)),
+    StatsScreen(),
     Scaffold(body: Center(child: Text('News'),)),
   ];
 

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import './screens/onboarding_screen.dart';
+// import './screens/onboarding_screen.dart';
 import './screens/dashbord_screen.dart';
 
 void main() async { 
+  WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
@@ -18,9 +19,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'COVID19 summary',
       theme: ThemeData(
-        primarySwatch: Colors.blueGrey
+        primarySwatch: Colors.deepPurple
       ),
-      home: OnboardingScreen(),
+      home: DashbordScreen(),
+      //OnboardingScreen()
+
       routes: {
         DashbordScreen.routeName: (_) => DashbordScreen()
       },
