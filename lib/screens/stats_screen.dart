@@ -21,7 +21,7 @@ class _StatsScreenState extends State<StatsScreen> {
         // elevation: 30.0,
       ),
       body: Container(
-        margin: EdgeInsets.symmetric(vertical: 23, horizontal: 5),
+        margin: EdgeInsets.symmetric(horizontal: 5),
         child: ListView(
           physics: BouncingScrollPhysics(),
           children: <Widget>[
@@ -30,6 +30,7 @@ class _StatsScreenState extends State<StatsScreen> {
             SizedBox(height: 15),
             buildStatsTitleText('Confirmed - Death - Recovered cases'),
             CdrPieChart(),
+            SizedBox(height: 15),
           ],
         ),
       ),

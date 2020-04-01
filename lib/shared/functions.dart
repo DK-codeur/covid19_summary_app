@@ -41,8 +41,7 @@ import './colors.dart';
               '$numb',
               style: TextStyle(
                 fontSize: 20.0,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w600,
                 color: Colors.white
               ),
             ),

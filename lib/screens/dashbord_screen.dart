@@ -1,6 +1,6 @@
-import 'package:covid19_summary_app/screens/stats_screen.dart';
 import 'package:flutter/material.dart';
 
+import './stats_screen.dart';
 import './summary_screen.dart';
 import '../screens/home_screen.dart';
 import '../shared/functions.dart';

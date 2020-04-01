@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-// import './screens/onboarding_screen.dart';
 import './screens/dashbord_screen.dart';
 
 void main() async { 
@@ -19,10 +18,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'COVID19 summary',
       theme: ThemeData(
-        primarySwatch: Colors.deepPurple
+        primarySwatch: Colors.indigo
       ),
       home: DashbordScreen(),
-      //OnboardingScreen()
 
       routes: {
         DashbordScreen.routeName: (_) => DashbordScreen()

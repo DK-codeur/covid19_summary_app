@@ -12,59 +12,93 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   final pageList = [
     PageModel(
-      color: const Color(0xFF678FB4),
-      heroAssetPath: 'assets/images/hands.png',
-      title: Text('Laver vos mains',
-          style: TextStyle(
-            fontWeight: FontWeight.w800,
-            color: Colors.white,
-            fontSize: 30.0,
-          )),
-      body: Text('loremlorem lorem loremlorem lorem loremlorem lorem lorem',
+      color: const Color(0xFFDD4C40),
+      heroAssetPath: 'assets/images/covid.png',
+      title: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text(
+          'Luttons Contre le COVID-19',
           textAlign: TextAlign.center,
           style: TextStyle(
+            fontWeight: FontWeight.w600,
             color: Colors.white,
-            fontSize: 18.0,
-          )),
+            fontSize: 26.0,
+          )
+        ),
+      ),
+      body: Container(),
+      iconAssetPath: 'assets/images/covid.png'
+    ),
+
+    PageModel(
+      // const Color(0xFF678FB4)
+      color: Colors.blue,
+      heroAssetPath: 'assets/images/hands.png',
+      title: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text(
+          'Laver regulièrement vos mains au savon',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontWeight: FontWeight.w600,
+            color: Colors.white,
+            fontSize: 26.0,
+          )
+        ),
+      ),
+      body: Container(),
       iconAssetPath: 'assets/images/hands.png'
     ),
 
     PageModel(
-        color: const Color(0xFF65B0B4),
-        heroAssetPath: 'assets/images/mask.png',
-        title: Text('Portez un masque chirugical',
-            style: TextStyle(
-              fontWeight: FontWeight.w800,
-              color: Colors.white,
-              fontSize: 30.0,
-            )),
-        body: Text(
-            'loremlorem lorem loremlorem lorem loremlorem lorem lorem',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 18.0,
-            )),
-        iconAssetPath: 'assets/images/mask.png'
+      color: Colors.pink,
+      heroAssetPath: 'assets/images/gel.png',
+      title: Text(
+        '...ou avec du gel hydroalcoolique',
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          fontWeight: FontWeight.w600,
+          color: Colors.white,
+          fontSize: 26.0,
+        )
+      ),
+      body: Container(),
+      iconAssetPath: 'assets/images/gel.png'
     ),
 
     PageModel(
-      color: const Color(0xFF9B90BC),
-      heroAssetPath: 'assets/images/hi.png',
-      title: Text('Eviter les accolade',
-          style: TextStyle(
-            fontWeight: FontWeight.w800,
-            color: Colors.white,
-            fontSize: 30.0,
-          )),
-      body: Text('loremlorem lorem loremlorem lorem loremlorem lorem lorem',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 18.0,
-          )),
-      iconAssetPath: 'assets/images/hi.png',
+      color: Colors.green,
+      heroAssetPath: 'assets/images/mask.png',
+      title: Text(
+        'Porter un masque de protection',
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          fontWeight: FontWeight.w600,
+          color: Colors.white,
+          fontSize: 26.0,
+        )
+      ),
+      body: Container(),
+      iconAssetPath: 'assets/images/mask.png'
     ),
+
+    PageModel(
+      color: Colors.indigo,
+      heroAssetPath: 'assets/images/hi.png',
+      title: Text(
+        'Eviter tous contact avec des tiers personnes',
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          fontWeight: FontWeight.w600,
+          color: Colors.white,
+          fontSize: 26.0,
+        )
+      ),
+      body: Container(),
+      iconAssetPath: 'assets/images/hi.png'
+    ),
+
+    
 ];
 
   @override

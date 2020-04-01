@@ -31,7 +31,7 @@ class _SummaryScreenState extends State<SummaryScreen> {
                 decoration: InputDecoration(
                   border: InputBorder.none,
                   hintText: 'Search country...',
-                  contentPadding: EdgeInsets.fromLTRB(12, 5, 5, 5),
+                  contentPadding: EdgeInsets.fromLTRB(12, 0, 5, 5),
                   hintStyle: TextStyle(
                     fontFamily: 'CenturyGothic',
                     color: whiteColor,
@@ -77,19 +77,30 @@ class _SummaryScreenState extends State<SummaryScreen> {
                           'assets/images/ci.png'
                         ),
                       ),
-                      Container(
-                        padding: EdgeInsets.all(8),
-                        width: MediaQuery.of(context).size.width * 0.8,
-                        decoration: BoxDecoration(
-                          color: primaryDark1,
-                          borderRadius: BorderRadius.all(Radius.circular(5))
-                        ),
-                        child: Text(
-                          "Côte d'Ivoire",
-                          style: TextStyle(
-                          fontFamily: 'Poppins',
-                          color: whiteColor
-                        ),
+                      InkWell(
+                        onTap: () {print('tapppped');},
+                        child: Container(
+                          padding: EdgeInsets.all(8),
+                          width: MediaQuery.of(context).size.width * 0.8,
+                          decoration: BoxDecoration(
+                            color: primaryDark1,
+                            borderRadius: BorderRadius.all(Radius.circular(5))
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Text(
+                                "Côte d'Ivoire",
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  color: whiteColor
+                                ),
+                              ),
+
+                              Icon(Icons.arrow_forward_ios, size: 13.2, color: whiteColor),
+                                
+                            ],
+                          ),
                         ),
                       )
                     ],
@@ -108,11 +119,11 @@ class _SummaryScreenState extends State<SummaryScreen> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: <Widget>[
-                             buildSummaryColumn('Confirmed', 8000, Colors.blue),
+                             buildSummaryColumn('Confirmed', 80, Colors.blue),
                              buildPip(),
-                             buildSummaryColumn('Death   ', 20, Colors.red),
+                             buildSummaryColumn('Death   ', 0, Colors.red),
                              buildPip(),
-                             buildSummaryColumn('Recovered', 780, Colors.green),
+                             buildSummaryColumn('Recovered', 3, Colors.green),
                           ],
                         ),
                       ),
@@ -124,10 +135,9 @@ class _SummaryScreenState extends State<SummaryScreen> {
               ),
             ),
 
-                   
 
-          Container(
-             margin: EdgeInsets.symmetric(vertical: 14.0),
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 14.0),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -139,19 +149,30 @@ class _SummaryScreenState extends State<SummaryScreen> {
                           'assets/images/fr.png'
                         ),
                       ),
-                      Container(
-                        padding: EdgeInsets.all(8),
-                        width: MediaQuery.of(context).size.width * 0.8,
-                        decoration: BoxDecoration(
-                          color: primaryDark1,
-                          borderRadius: BorderRadius.all(Radius.circular(5))
-                        ),
-                        child: Text(
-                          "France",
-                          style: TextStyle(
-                          fontFamily: 'Poppins',
-                          color: whiteColor
-                        ),
+                      InkWell(
+                        onTap: () {print('tapppped');},
+                        child: Container(
+                          padding: EdgeInsets.all(8),
+                          width: MediaQuery.of(context).size.width * 0.8,
+                          decoration: BoxDecoration(
+                            color: primaryDark1,
+                            borderRadius: BorderRadius.all(Radius.circular(5))
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Text(
+                                "France",
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  color: whiteColor
+                                ),
+                              ),
+
+                              Icon(Icons.arrow_forward_ios, size: 13.2, color: whiteColor),
+                                
+                            ],
+                          ),
                         ),
                       )
                     ],
@@ -185,7 +206,6 @@ class _SummaryScreenState extends State<SummaryScreen> {
                 ],
               ),
             ),
-
 
 
             Container(
@@ -201,19 +221,30 @@ class _SummaryScreenState extends State<SummaryScreen> {
                           'assets/images/cn.png'
                         ),
                       ),
-                      Container(
-                        padding: EdgeInsets.all(8),
-                        width: MediaQuery.of(context).size.width * 0.8,
-                        decoration: BoxDecoration(
-                          color: primaryDark1,
-                          borderRadius: BorderRadius.all(Radius.circular(5))
-                        ),
-                        child: Text(
-                          "Chine",
-                          style: TextStyle(
-                          fontFamily: 'Poppins',
-                          color: whiteColor
-                        ),
+                      InkWell(
+                        onTap: () {print('tapppped');},
+                        child: Container(
+                          padding: EdgeInsets.all(8),
+                          width: MediaQuery.of(context).size.width * 0.8,
+                          decoration: BoxDecoration(
+                            color: primaryDark1,
+                            borderRadius: BorderRadius.all(Radius.circular(5))
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Text(
+                                "Côte d'Ivoire",
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  color: whiteColor
+                                ),
+                              ),
+
+                              Icon(Icons.arrow_forward_ios, size: 13.2, color: whiteColor),
+                                
+                            ],
+                          ),
                         ),
                       )
                     ],
@@ -232,11 +263,11 @@ class _SummaryScreenState extends State<SummaryScreen> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: <Widget>[
-                             buildSummaryColumn('Confirmed', 8000, Colors.blue),
+                             buildSummaryColumn('Confirmed', 50000, Colors.blue),
                              buildPip(),
-                             buildSummaryColumn('Death   ', 20, Colors.red),
+                             buildSummaryColumn('Death   ', 120, Colors.red),
                              buildPip(),
-                             buildSummaryColumn('Recovered', 780, Colors.green),
+                             buildSummaryColumn('Recovered', 49880, Colors.green),
                           ],
                         ),
                       ),
@@ -247,6 +278,8 @@ class _SummaryScreenState extends State<SummaryScreen> {
                 ],
               ),
             ),
+
+            
           ],
         ),
       ),
