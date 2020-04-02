@@ -2,14 +2,17 @@
 //
 //     final corona = coronaFromJson(jsonString);
 
+import 'package:flutter/material.dart';
 import 'dart:convert';
+
 import './country.dart';
 
+//merci
 Corona coronaFromJson(String str) => Corona.fromJson(json.decode(str));
-
 String coronaToJson(Corona data) => json.encode(data.toJson());
 
-class Corona {
+
+class Corona with ChangeNotifier {
   List<Country> countries;
   DateTime date;
 

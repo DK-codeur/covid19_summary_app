@@ -1,4 +1,7 @@
+import 'package:covid19_summary_app/providers/data_provider.dart';
+import 'package:covid19_summary_app/widget/summary_item.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../shared/colors.dart';
 import '../shared/functions.dart';
@@ -9,8 +12,45 @@ class SummaryScreen extends StatefulWidget {
 }
 
 class _SummaryScreenState extends State<SummaryScreen> {
+
+  var _isInit = true;
+  var _isLoading = false;
+
+  Future refreshData(BuildContext context) async {
+    await Provider.of<CoronaProvider>(context).fetchAndSetData();
+  }
+
+  @override
+  void didChangeDependencies() {
+    if(_isInit) {
+      setState(() {
+        _isLoading = true;
+      });
+
+      Provider.of<CoronaProvider>(context).fetchAndSetData().then((_) {
+        setState(() {
+          _isLoading = false;
+        });
+      });
+    }
+
+    _isInit = false;
+    super.didChangeDependencies();
+  }
+
+  @override
+  void initState() {
+    // Future.delayed(Duration.zero).then((_) {
+    //   Provider.of<CoronaProvider>(context).fetchAndSetData();
+    // });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+
+    final country = Provider.of<CoronaProvider>(context).country;
+
     return Scaffold(
       backgroundColor: primaryDark,
       appBar: AppBar(
@@ -59,231 +99,32 @@ class _SummaryScreenState extends State<SummaryScreen> {
         ),
       ),
 
-      body: Padding(
-        padding: const EdgeInsets.only(top: 5.0),
-        child: ListView(
-          children: <Widget>[
-            
-            Container(
-              margin: EdgeInsets.symmetric(vertical: 14.0),
-              child: Column(
-                children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
-                      CircleAvatar(
-                        radius: 16,
-                        backgroundImage: AssetImage(
-                          'assets/images/ci.png'
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () {print('tapppped');},
-                        child: Container(
-                          padding: EdgeInsets.all(8),
-                          width: MediaQuery.of(context).size.width * 0.8,
-                          decoration: BoxDecoration(
-                            color: primaryDark1,
-                            borderRadius: BorderRadius.all(Radius.circular(5))
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Text(
-                                "Côte d'Ivoire",
-                                style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  color: whiteColor
-                                ),
-                              ),
-
-                              Icon(Icons.arrow_forward_ios, size: 13.2, color: whiteColor),
-                                
-                            ],
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-
-                  Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: Container(
-                      width: MediaQuery.of(context).size.width * .95,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.white12, width: 1),
-                        borderRadius: BorderRadius.all(Radius.circular(7.0))
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: <Widget>[
-                             buildSummaryColumn('Confirmed', 80, Colors.blue),
-                             buildPip(),
-                             buildSummaryColumn('Death   ', 0, Colors.red),
-                             buildPip(),
-                             buildSummaryColumn('Recovered', 3, Colors.green),
-                          ],
-                        ),
-                      ),
-
-                      
-                    ),
-                  )
-                ],
+      body: (_isLoading) 
+      ? Center(child: Text('Loading...'),) 
+      : RefreshIndicator(
+        onRefresh: () => refreshData(context),
+        child: Padding(
+          padding: const EdgeInsets.only(top: 5.0),
+            child: ListView.builder(
+              itemCount: country.length - 1,
+              itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
+                value: country[i+1],
+                child: SummaryItem(),
               ),
             ),
-
-
-            Container(
-              margin: EdgeInsets.symmetric(vertical: 14.0),
-              child: Column(
-                children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
-                      CircleAvatar(
-                        radius: 16,
-                        backgroundImage: AssetImage(
-                          'assets/images/fr.png'
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () {print('tapppped');},
-                        child: Container(
-                          padding: EdgeInsets.all(8),
-                          width: MediaQuery.of(context).size.width * 0.8,
-                          decoration: BoxDecoration(
-                            color: primaryDark1,
-                            borderRadius: BorderRadius.all(Radius.circular(5))
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Text(
-                                "France",
-                                style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  color: whiteColor
-                                ),
-                              ),
-
-                              Icon(Icons.arrow_forward_ios, size: 13.2, color: whiteColor),
-                                
-                            ],
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-
-                  Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: Container(
-                      width: MediaQuery.of(context).size.width * .95,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.white12, width: 1),
-                        borderRadius: BorderRadius.all(Radius.circular(7.0))
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: <Widget>[
-                             buildSummaryColumn('Confirmed', 8000, Colors.blue),
-                             buildPip(),
-                             buildSummaryColumn('Death   ', 20, Colors.red),
-                             buildPip(),
-                             buildSummaryColumn('Recovered', 780, Colors.green),
-                          ],
-                        ),
-                      ),
-
-                      
-                    ),
-                  )
-                ],
-              ),
-            ),
-
-
-            Container(
-              margin: EdgeInsets.symmetric(vertical: 14.0),
-              child: Column(
-                children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
-                      CircleAvatar(
-                        radius: 16,
-                        backgroundImage: AssetImage(
-                          'assets/images/cn.png'
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () {print('tapppped');},
-                        child: Container(
-                          padding: EdgeInsets.all(8),
-                          width: MediaQuery.of(context).size.width * 0.8,
-                          decoration: BoxDecoration(
-                            color: primaryDark1,
-                            borderRadius: BorderRadius.all(Radius.circular(5))
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Text(
-                                "Côte d'Ivoire",
-                                style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  color: whiteColor
-                                ),
-                              ),
-
-                              Icon(Icons.arrow_forward_ios, size: 13.2, color: whiteColor),
-                                
-                            ],
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-
-                  Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: Container(
-                      width: MediaQuery.of(context).size.width * .95,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.white12, width: 1),
-                        borderRadius: BorderRadius.all(Radius.circular(7.0))
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: <Widget>[
-                             buildSummaryColumn('Confirmed', 50000, Colors.blue),
-                             buildPip(),
-                             buildSummaryColumn('Death   ', 120, Colors.red),
-                             buildPip(),
-                             buildSummaryColumn('Recovered', 49880, Colors.green),
-                          ],
-                        ),
-                      ),
-
-                      
-                    ),
-                  )
-                ],
-              ),
-            ),
-
-            
-          ],
-        ),
-      ),
+        )
+      )
     );
   }
-  
 }
+
+
+
+
+// ListView.builder(
+//               itemCount: coronaCountry.length,
+//               itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
+//                 value: coronaCountry[i],
+//                 child: SummaryItem(),
+//               ),
+//             ),

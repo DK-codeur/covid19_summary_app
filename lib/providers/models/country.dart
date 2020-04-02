@@ -1,4 +1,6 @@
-class Country {
+import 'package:flutter/material.dart';
+
+class Country with ChangeNotifier{
 
   String country;
   String slug;

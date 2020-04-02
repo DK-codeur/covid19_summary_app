@@ -1,4 +1,6 @@
+import 'package:covid19_summary_app/providers/data_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import './stats_screen.dart';
 import './summary_screen.dart';
@@ -30,6 +32,16 @@ class _DashbordScreenState extends State<DashbordScreen> {
     Scaffold(body: Center(child: Text('News'),)),
   ];
 
+  
+@override
+  void initState() {
+    Future.delayed(Duration.zero).then((_) {
+      Provider.of<CoronaProvider>(context).fetchAndSetData();
+      Provider.of<AnyCountryProvider>(context).fetchAndSetAnyCountry();
+    });
+    super.initState();
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(

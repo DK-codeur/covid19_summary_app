@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import './providers/data_provider.dart';
 import './screens/dashbord_screen.dart';
 
 void main() async { 
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown,
+    // DeviceOrientation.portraitDown,
   ]);
   runApp(MyApp());
 }
@@ -14,17 +16,28 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'COVID19 summary',
-      theme: ThemeData(
-        primarySwatch: Colors.indigo
-      ),
-      home: DashbordScreen(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => CoronaProvider()
+        ),
 
-      routes: {
-        DashbordScreen.routeName: (_) => DashbordScreen()
-      },
+        ChangeNotifierProvider(
+          create: (_) => AnyCountryProvider()
+        )
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'COVID19 summary',
+        theme: ThemeData(
+          primarySwatch: Colors.indigo
+        ),
+        home: DashbordScreen(),
+
+        routes: {
+          DashbordScreen.routeName: (_) => DashbordScreen()
+        },
+      ),
     );
   }
 }

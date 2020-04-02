@@ -1,5 +1,8 @@
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../providers/data_provider.dart';
 import '../shared/colors.dart';
 import '../widget/latest_new.dart';
 import '../shared/functions.dart';
@@ -10,6 +13,15 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  @override
+  void initState() {
+    // Future.delayed(Duration.zero).then((_) {
+    //   Provider.of<AnyCountryProvider>(context).fetchAndSetAnyCountry();
+    // });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
