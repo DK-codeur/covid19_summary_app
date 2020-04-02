@@ -13,38 +13,20 @@ class SummaryScreen extends StatefulWidget {
 
 class _SummaryScreenState extends State<SummaryScreen> {
 
-  var _isInit = true;
-  var _isLoading = false;
 
   Future refreshData(BuildContext context) async {
     await Provider.of<CoronaProvider>(context).fetchAndSetData();
   }
 
-  @override
-  void didChangeDependencies() {
-    if(_isInit) {
-      setState(() {
-        _isLoading = true;
-      });
+  
 
-      Provider.of<CoronaProvider>(context).fetchAndSetData().then((_) {
-        setState(() {
-          _isLoading = false;
-        });
-      });
-    }
-
-    _isInit = false;
-    super.didChangeDependencies();
-  }
-
-  @override
-  void initState() {
-    // Future.delayed(Duration.zero).then((_) {
-    //   Provider.of<CoronaProvider>(context).fetchAndSetData();
-    // });
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   Future.delayed(Duration.zero).then((_) {
+  //     Provider.of<CoronaProvider>(context).fetchAndSetData();
+  //   });
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -99,9 +81,7 @@ class _SummaryScreenState extends State<SummaryScreen> {
         ),
       ),
 
-      body: (_isLoading) 
-      ? Center(child: Text('Loading...'),) 
-      : RefreshIndicator(
+      body: RefreshIndicator(
         onRefresh: () => refreshData(context),
         child: Padding(
           padding: const EdgeInsets.only(top: 5.0),

@@ -16,16 +16,10 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (_) => CoronaProvider()
-        ),
-
-        ChangeNotifierProvider(
-          create: (_) => AnyCountryProvider()
-        )
-      ],
+    return ChangeNotifierProvider(
+      
+      create: (_) => CoronaProvider(),
+    
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'COVID19 summary',

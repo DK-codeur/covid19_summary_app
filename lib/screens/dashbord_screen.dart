@@ -16,6 +16,8 @@ class DashbordScreen extends StatefulWidget {
 }
 
 class _DashbordScreenState extends State<DashbordScreen> {
+  var _isInit = true;
+  var _isLoading = false;
 
   int _selectedIndex = 0;
 
@@ -33,20 +35,38 @@ class _DashbordScreenState extends State<DashbordScreen> {
   ];
 
   
-@override
-  void initState() {
-    Future.delayed(Duration.zero).then((_) {
-      Provider.of<CoronaProvider>(context).fetchAndSetData();
-      Provider.of<AnyCountryProvider>(context).fetchAndSetAnyCountry();
-    });
-    super.initState();
+  @override
+  void didChangeDependencies() {
+    if(_isInit) {
+      setState(() {
+        _isLoading = true;
+      });
+
+      Provider.of<CoronaProvider>(context).fetchAndSetData().then((_) {
+        setState(() {
+          _isLoading = false;
+        });
+      });
+
+      
+    }
+
+    _isInit = false;
+    super.didChangeDependencies();
   }
   
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: primaryDark2,
-      body: _tabs[_selectedIndex],
+      body: (_isLoading) 
+      ? Container(
+        margin: EdgeInsets.only(top: MediaQuery.of(context).size.height / 2),
+        child: Center(
+          child: Text('Loading...')
+        ),
+      )
+      : _tabs[_selectedIndex],
 
       bottomNavigationBar: buildBubbleBottomBar(_selectedIndex, _onItemTapped),
     );

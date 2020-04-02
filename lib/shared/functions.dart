@@ -89,7 +89,7 @@ import './colors.dart';
               // fontWeight: FontWeight.bold, 
               color: Colors.white70
             ),
-          ),
+          ),          
         ],
       ),
     );

@@ -11,13 +11,13 @@ List<AnyCountry> anyCountryFromJson(String str) => List<AnyCountry>.from(json.de
 String anyCountryToJson(List<AnyCountry> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class AnyCountry with ChangeNotifier {
-  MyCountry country;
+  String country;
   String province;
   double lat;
   double lon;
   DateTime date;
   int cases;
-  Status status;
+  String status;
 
   AnyCountry({
     this.country,
@@ -30,53 +30,53 @@ class AnyCountry with ChangeNotifier {
   });
 
     factory AnyCountry.fromJson(Map<String, dynamic> json) => AnyCountry(
-        country: countryValues.map[json["Country"]],
+        country: json["Country"],
         province: json["Province"],
         lat: json["Lat"].toDouble(),
         lon: json["Lon"].toDouble(),
         date: DateTime.parse(json["Date"]),
         cases: json["Cases"],
-        status: statusValues.map[json["Status"]],
+        status:json["Status"],
     );
 
     Map<String, dynamic> toJson() => {
-        "Country": countryValues.reverse[country],
+        "Country": country,
         "Province": province,
         "Lat": lat,
         "Lon": lon,
         "Date": date.toIso8601String(),
         "Cases": cases,
-        "Status": statusValues.reverse[status],
+        "Status": status,
     };
 }
 
-  enum MyCountry {
-    COTE_D_IVOIRE 
-  }
+//   enum MyCountry {
+//     COTE_D_IVOIRE 
+//   }
 
-  final countryValues = EnumValues({
-    "Cote d'Ivoire": MyCountry.COTE_D_IVOIRE
-  });
+//   final countryValues = EnumValues({
+//     "Cote d'Ivoire": MyCountry.COTE_D_IVOIRE
+//   });
 
 
-  enum Status { 
-    CONFIRMED 
-  }
+//   enum Status { 
+//     CONFIRMED 
+//   }
   
-  final statusValues = EnumValues({
-    "confirmed": Status.CONFIRMED
-  });
+//   final statusValues = EnumValues({
+//     "confirmed": Status.CONFIRMED
+//   });
 
-class EnumValues<T> {
-    Map<String, T> map;
-    Map<T, String> reverseMap;
+// class EnumValues<T> {
+//     Map<String, T> map;
+//     Map<T, String> reverseMap;
 
-    EnumValues(this.map);
+//     EnumValues(this.map);
 
-    Map<T, String> get reverse {
-        if (reverseMap == null) {
-            reverseMap = map.map((k, v) => new MapEntry(v, k));
-        }
-        return reverseMap;
-    }
-}
+//     Map<T, String> get reverse {
+//         if (reverseMap == null) {
+//             reverseMap = map.map((k, v) => new MapEntry(v, k));
+//         }
+//         return reverseMap;
+//     }
+// }
