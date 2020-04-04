@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Stack(
                   children: <Widget>[
                     Container(
-                      height: MediaQuery.of(context).size.height / 3,
+                      height: MediaQuery.of(context).size.height / 2.5,
                       // width: double.infinity,
                       child: Carousel(
                         images: [
